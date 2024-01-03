@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "书籍互动助手",
+  "version": "1.0",
+  "description": "在豆瓣读书和微信读书页面提供书籍总结和互动功能。",
+  "permissions": ["storage", "activeTab"],
+  "host_permissions": [
+      "https://*.douban.com/*",
+      "https://*.weread.qq.com/*",
+      "<all_urls>"
+  ],
+  "action": {
+      "default_popup": "popup.html",
+      "default_icon": "icon.png"
+  },
+  "background": {
+      "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://book.douban.com/subject/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "icons": {
+      "48": "icon.png"
+  },
+  "options_page": "options.html"
+}
